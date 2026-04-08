@@ -8,7 +8,7 @@ servers:
       base_url:
         default: localhost
         description: Base URL for endpoint construction.
-  - url: https://api.example.com/Logging/v1
+  - url: https://localhost/Logging/v1
     description: NENA-STA-010.3f-2021 legacy endpoint reference.
 paths:
   /LogEvents:
@@ -385,7 +385,7 @@ paths:
           base_url:
             default: localhost
             description: Base URL for endpoint construction.
-      - url: https://api.example.com/Logging
+      - url: https://localhost/Logging
         description: NENA-STA-010.3f-2021 legacy endpoint reference.
     get:
       tags:
