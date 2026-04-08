@@ -1,9 +1,15 @@
 openapi: 3.0.1
 info:
   title: Logging Service
-  version: "1.3.0"
+  version: "1.4.0"
 servers:
+  - url: "{base_url}/Logging/v1"
+    variables:
+      base_url:
+        default: localhost
+        description: Base URL for endpoint construction.
   - url: https://api.example.com/Logging/v1
+    description: NENA-STA-010.3f-2021 legacy endpoint reference.
 paths:
   /LogEvents:
     get:
@@ -68,7 +74,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'i3-common.yaml#/components/schemas/Jws'
+              $ref: 'https://raw.githubusercontent.com/dthvt/i3-common/refs/heads/metadata-example/i3-common.yaml#/components/schemas/Jws'
         required: true
       responses:
         '201':
@@ -111,7 +117,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: 'i3-common.yaml#/components/schemas/Jws'
+                $ref: 'https://raw.githubusercontent.com/dthvt/i3-common/refs/heads/metadata-example/i3-common.yaml#/components/schemas/Jws'
         '404':
           description: Not found
   /Conversations:
@@ -358,10 +364,29 @@ paths:
           description: Not found
         '454':
           description: Unspecified Error
+  /Metadata:
+    get:
+      tags:
+        - RetrieveMetadata
+      summary: Retrives service metadata.
+      operationId: RetrieveMetadata
+      responses:
+        '200':
+          description: Metadata Found
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/dthvt/i3-common/refs/heads/metadata-example/i3-common.yaml#/components/schemas/Metadata
   /Versions:
     servers:
-      - url: https://api.example.com/Logging
+      - url: "{base_url}/Logging"
         description: Override base path for Versions query
+        variables:
+          base_url:
+            default: localhost
+            description: Base URL for endpoint construction.
+      - url: https://api.example.com/Logging
+        description: NENA-STA-010.3f-2021 legacy endpoint reference.
     get:
       tags:
         - RetrieveVersions
@@ -373,7 +398,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: 'i3-common.yaml#/components/schemas/VersionsArray'
+                $ref: 'https://raw.githubusercontent.com/dthvt/i3-common/refs/heads/metadata-example/i3-common.yaml#/components/schemas/Metadata'
 components:
   schemas:
     LogEventContainerArray:
@@ -410,7 +435,7 @@ components:
           items:
             type: string
         logEvent:
-          $ref: 'i3-common.yaml#/components/schemas/Jws'
+          $ref: 'https://raw.githubusercontent.com/dthvt/i3-common/refs/heads/metadata-example/i3-common.yaml#/components/schemas/Jws'
     LogEventIdArray:
       type: object
       required:
