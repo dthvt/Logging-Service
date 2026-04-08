@@ -376,7 +376,18 @@ paths:
             description: Base URL for endpoint construction.
       - url: https://localhost/Logging
         description: NENA-STA-010.3f-2021 legacy endpoint reference.
-    $ref: 'https://raw.githubusercontent.com/dthvt/i3-common/refs/heads/metadata-example/i3-common.yaml#/Metadata'
+    get:
+      tags:
+        - RetrieveVersions
+      summary: Retrieves all supported versions, vendor parameter is optional.
+      operationId: RetrieveVersions
+      responses:
+        '200':
+          description: Versions found
+          content:
+            application/json:
+              schema:
+                $ref: 'https://raw.githubusercontent.com/dthvt/i3-common/refs/heads/metadata-example/i3-common.yaml#/components/schemas/Metadata'
 components:
   schemas:
     LogEventContainerArray:
