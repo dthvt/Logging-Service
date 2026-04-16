@@ -6,7 +6,7 @@ servers:
   - url: "{base_url}/v1"
     variables:
       base_url:
-        default: localhost
+        default: https://localhost/Logging
         description: Base URL for endpoint construction.
 paths:
   /LogEvents:
@@ -370,7 +370,7 @@ paths:
         description: Override base path for Versions query
         variables:
           base_url:
-            default: localhost
+            default: https://localhost/Logging
             description: Base URL for endpoint construction.
     get:
       tags:
