@@ -1086,6 +1086,8 @@ components:
               type: string
             legacyCallId:
               type: string
+            esn:
+              type: string
     HookflashLogEvent:
       allOf:
         - $ref: '#/components/schemas/LogEvent'
