@@ -560,6 +560,13 @@ components:
           type: object
       discriminator:
         propertyName: logEventType
+    AdditionalDataAddedLogEvent:
+      allOf:
+        - $ref: "#/components/schemas/LogEvent"
+        - type: object
+          properties:
+            block:
+              type: string
     CallProcessLogEvent:
       allOf:
         - $ref: '#/components/schemas/LogEvent'
